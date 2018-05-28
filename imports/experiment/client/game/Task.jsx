@@ -14,13 +14,13 @@ export default class Task extends React.Component {
     return (
       <div className="task">
         <button
-          className="pt-button pt-minimal pt-large top-left"
+          className="pt-button pt-minimal pt-large left"
           onClick={() => this.handleSubmit(task.options[0])}
         >
           {task.options[0]}
         </button>
         <button
-          className="pt-button pt-minimal pt-large top-right"
+          className="pt-button pt-minimal pt-large right"
           onClick={() => this.handleSubmit(task.options[1])}
         >
           {task.options[1]}
@@ -31,14 +31,14 @@ export default class Task extends React.Component {
         </div>
 
         <button
-          className="pt-button pt-minimal pt-large bottom-left"
+          className="pt-button pt-minimal pt-large left"
           onClick={() => this.handleSubmit(task.options[2])}
         >
           {task.options[2]}
         </button>
         <button
           text={"something"}
-          className="pt-button pt-minimal pt-large bottom-right"
+          className="pt-button pt-minimal pt-large right"
           onClick={() => this.handleSubmit(task.options[0])}
         >
           {task.options[3]}

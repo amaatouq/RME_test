@@ -3,6 +3,7 @@ import {taskData} from "./constants";
 export const init = (treatment, players) => {
   players.forEach((player, i) => {
     player.set("avatar", `/avatars/jdenticon/${player._id}`);
+    player.set("score",0)
   });
   
   const task = _.shuffle(taskData);

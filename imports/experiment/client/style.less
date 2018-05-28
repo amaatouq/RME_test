@@ -69,52 +69,11 @@
   }
 }
 
-.social-exposure {
-  margin: 1rem;
-
-  .alter {
-    // TODO remove "css grid", no necessary here
-    display: grid;
-    grid-gap: 3rem;
-    grid-template-areas: "img range";
-    padding-right: 3rem;
-
-    img {
-      grid-area: img;
-      width: 6rem;
-      height: 6rem;
-    }
-    .range {
-      grid-area: range;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .empty {
-      .pt-slider-handle {
-        visibility: hidden;
-      }
-    }
-  }
-}
 
 .task {
   align-content: right;
   padding-left: 3rem;
   overflow: auto;
-
-  .form {
-    margin: 0 auto;
-    padding: 100px 30px 0;
-
-    @media (min-width: 800px) {
-      max-width: 60%;
-    }
-  }
-
-  .input-range {
-    margin-bottom: 160px;
-  }
 
   .task-image {
     width: 60rem;
@@ -144,31 +103,3 @@
   }
 }
 
-.task-stimulus {
-  .task-image {
-    height: 35rem;
-    width: 50rem;
-    object-fit: contain;
-  }
-  .transparent {
-    opacity: 0.5;
-  }
-}
-
-.task-response {
-  width: 50rem;
-  margin: 3rem 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  form {
-    width: 40rem;
-  }
-
-  .empty {
-    .pt-slider-handle {
-      visibility: hidden;
-    }
-  }
-}

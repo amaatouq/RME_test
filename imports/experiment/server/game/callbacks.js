@@ -3,9 +3,16 @@ export const onRoundStart = (game, round, players) => {};
 export const onStageEnd = (game, round, stage, players) => {};
 
 export const onRoundEnd = (game, round, players) => {
+  //compute the score
+  const correctAnswer = round.get("task").correctAnswer;
+
   players.forEach(player => {
-    const value = player.round.get("value") || 0;
-    const prevScore = player.get("score") || 0;
-    player.set("score", prevScore + value);
+    const answer = player.round.get("answer");
+    // If no guess given, score is 0
+    const score = !answer
+      ? 0
+      : Math.round((1 - Math.abs(correctAnswer - answer)) * 10);
+
+    player.round.set("score", score);
   });
 };

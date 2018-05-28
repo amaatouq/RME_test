@@ -1,16 +1,48 @@
 import React from "react";
 
-import TaskResponse from "./TaskResponse";
-import TaskStimulus from "./TaskStimulus";
-
 export default class Task extends React.Component {
+  handleSubmit = answer => {
+    const { player } = this.props;
+    player.round.set("answer", answer);
+    player.stage.submit();
+  };
+
   render() {
-    const { game, round, stage, player } = this.props;
+    const { round } = this.props;
+    const task = round.get("task");
 
     return (
       <div className="task">
-        <TaskStimulus round={round} stage={stage} player={player} />
-        <TaskResponse round={round} stage={stage} player={player} game={game} />
+        <button
+          className="pt-button pt-minimal pt-large top-left"
+          onClick={() => this.handleSubmit(task.options[0])}
+        >
+          {task.options[0]}
+        </button>
+        <button
+          className="pt-button pt-minimal pt-large top-right"
+          onClick={() => this.handleSubmit(task.options[1])}
+        >
+          {task.options[1]}
+        </button>
+
+        <div className="task-stimulus">
+          <img src={"/experiment/faces/"+task.image} className="task-image" />
+        </div>
+
+        <button
+          className="pt-button pt-minimal pt-large bottom-left"
+          onClick={() => this.handleSubmit(task.options[2])}
+        >
+          {task.options[2]}
+        </button>
+        <button
+          text={"something"}
+          className="pt-button pt-minimal pt-large bottom-right"
+          onClick={() => this.handleSubmit(task.options[0])}
+        >
+          {task.options[3]}
+        </button>
       </div>
     );
   }

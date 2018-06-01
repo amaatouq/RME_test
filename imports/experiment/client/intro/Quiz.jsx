@@ -4,7 +4,7 @@ import { AlertToaster } from "../../../core/ui/components/AlertToaster.jsx";
 import Centered from "../../../core/ui/components/Centered.jsx";
 
 export default class Quiz extends React.Component {
-  state = { value1: "", value2: "" };
+  state = { value1: "", value2: "", value3: "" };
 
   handleChange = event => {
     const el = event.currentTarget;
@@ -12,10 +12,18 @@ export default class Quiz extends React.Component {
   };
 
   handleSubmit = event => {
+    const correctValue1=["eyes","eye"];
     event.preventDefault();
 
-    if (this.state.value1 !== "4" || this.state.value2 !== "white") {
-      AlertToaster.show({ message: "Nope" });
+    if (
+      !correctValue1.includes(this.state.value1)||
+      this.state.value2 !== "4" ||
+      this.state.value3 !== "white"
+    ) {
+      AlertToaster.show({
+        message:
+          "Sorry, you made a mistake! Please go back to the instructions and make sure you understand the task"
+      });
     } else {
       this.props.onNext();
     }
@@ -23,12 +31,30 @@ export default class Quiz extends React.Component {
 
   render() {
     const { hasPrev, hasNext, onNext, onPrev } = this.props;
-    const { value1, value2 } = this.state;
+    const { value1, value2, value3 } = this.state;
     return (
       <Centered>
         <div className="quiz">
           <h1> Quiz </h1>
           <form onSubmit={this.handleSubmit}>
+            <div className="pt-form-group">
+              <label className="pt-label" htmlFor="example-form-group-input-a">
+                Which part of the face you are going to be shown?
+              </label>
+              <div className="pt-form-content">
+                <input
+                  id="example-form-group-input-a"
+                  className="pt-input"
+                  placeholder="e.g. ears"
+                  type="text"
+                  dir="auto"
+                  name="value1"
+                  value={value1}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
             <div className="pt-form-group">
               <label className="pt-label" htmlFor="example-form-group-input-a">
                 What is 2+2?
@@ -40,8 +66,8 @@ export default class Quiz extends React.Component {
                   placeholder="e.g. 3"
                   type="text"
                   dir="auto"
-                  name="value1"
-                  value={value1}
+                  name="value2"
+                  value={value2}
                   onChange={this.handleChange}
                   required
                 />
@@ -58,8 +84,8 @@ export default class Quiz extends React.Component {
                   placeholder="e.g. brown"
                   type="text"
                   dir="auto"
-                  name="value2"
-                  value={value2}
+                  name="value3"
+                  value={value3}
                   onChange={this.handleChange}
                   required
                 />

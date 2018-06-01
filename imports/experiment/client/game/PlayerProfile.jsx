@@ -18,19 +18,20 @@ export default class PlayerProfile extends React.Component {
     return (
       <div className="profile-score">
         <h4>Total score</h4>
-        <span>{player.get("score") || 0}</span>
+        <span>{player.get("score")}</span>
       </div>
     );
   }
 
   render() {
-    const { stage } = this.props;
-
+    const { game, stage } = this.props;
     return (
       <aside className="pt-card player-profile">
         {this.renderProfile()}
         {this.renderScore()}
-        <Timer stage={stage} />
+        {game.treatment.stageDuration === 0 ? null : (
+          <Timer stage={stage} />
+        )}
       </aside>
     );
   }

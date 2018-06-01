@@ -39,7 +39,7 @@ export default class Task extends React.Component {
         >
           <button
             className="pt-button pt-minimal pt-large"
-            onClick={() => this.handleSubmit(options[0])}
+            onClick={() => this.handleSubmit(options[0].toLowerCase())}
           >
             {options[0]}
           </button>
@@ -53,7 +53,7 @@ export default class Task extends React.Component {
         >
           <button
             className="pt-button pt-minimal pt-large"
-            onClick={() => this.handleSubmit(options[1])}
+            onClick={() => this.handleSubmit(options[1].toLowerCase())}
           >
             {options[1]}
           </button>
@@ -71,7 +71,7 @@ export default class Task extends React.Component {
         >
           <button
             className="pt-button pt-minimal pt-large"
-            onClick={() => this.handleSubmit(options[2])}
+            onClick={() => this.handleSubmit(options[2].toLowerCase())}
           >
             {options[2]}
           </button>
@@ -85,7 +85,7 @@ export default class Task extends React.Component {
         >
           <button
             className="pt-button pt-minimal pt-large"
-            onClick={() => this.handleSubmit(options[3])}
+            onClick={() => this.handleSubmit(options[3].toLowerCase())}
           >
             {options[3]}
           </button>

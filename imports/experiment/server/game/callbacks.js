@@ -10,7 +10,10 @@ export const onRoundEnd = (game, round, players) => {
     const answer = player.round.get("answer");
     // If no guess given, score is 0
     const score = !answer ? 0 : correctAnswer === answer ? 1 : 0;
+    console.log("correctAnswer ", correctAnswer);
+    console.log("answer",answer);
+    console.log("score now is ",score);
 
-    player.set("score", player.get("score") + score);
+    player.set("score", player.get("score") + Math.round(score));
   });
 };

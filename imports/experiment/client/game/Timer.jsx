@@ -5,7 +5,7 @@ import Timer from "./Timer.jsx";
 
 class timer extends React.Component {
   render() {
-    const { remainingSeconds } = this.props;
+    const { remainingSeconds, game } = this.props;
 
     const classes = ["timer"];
     if (remainingSeconds <= 5) {
@@ -17,7 +17,9 @@ class timer extends React.Component {
     return (
       <div className={classes.join(" ")}>
         <h4>Timer</h4>
-        <span className="seconds">{remainingSeconds}</span>
+        <span className="seconds">
+          {game.treatment.stageDuration === 0 ? "N/A" : remainingSeconds}
+        </span>
       </div>
     );
   }

@@ -29,9 +29,7 @@ export default class PlayerProfile extends React.Component {
       <aside className="pt-card player-profile">
         {this.renderProfile()}
         {this.renderScore()}
-        {game.treatment.stageDuration === 0 ? null : (
-          <Timer stage={stage} />
-        )}
+        <Timer stage={stage} game={game} />
       </aside>
     );
   }

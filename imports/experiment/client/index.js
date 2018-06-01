@@ -6,7 +6,7 @@ import Instructions from "./intro/Instructions.jsx";
 import Quiz from "./intro/Quiz.jsx";
 import Round from "./game/Round.jsx";
 import Thanks from "./outro/Thanks.jsx";
-
+import Example from "./intro/Example.jsx";
 export const config = {
   RoundComponent: Round,
   ConsentComponent: Consent,
@@ -15,7 +15,7 @@ export const config = {
   // At this point they have been assigned a treatment. You can return
   // different instruction steps depending on the assigned treatment.
   InstructionSteps(treatment) {
-    const steps = [Instructions];
+    const steps = [Instructions, Example];
     steps.push(Quiz);
     return steps;
   },

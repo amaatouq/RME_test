@@ -43,8 +43,10 @@ export default class ExitSurvey extends React.Component {
             <strong>{player._id}</strong>.
           </p>
           <p>
-            You final <strong>bonus is {Math.round(player.get("score")/10.0)}</strong> in addition of the{" "}
-            <strong>$1 base reward</strong> for completing the HIT.
+            You final{" "}
+            <strong>bonus is {Math.round(player.get("score") / 10.0)}</strong>{" "}
+            in addition of the <strong>$1 base reward</strong> for completing
+            the HIT.
           </p>
           <br />
           <p>

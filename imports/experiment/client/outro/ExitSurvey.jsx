@@ -44,7 +44,7 @@ export default class ExitSurvey extends React.Component {
           </p>
           <p>
             You final{" "}
-            <strong>bonus is {Math.round(player.get("score") / 10.0)}</strong>{" "}
+            <strong>bonus is ${Math.round(player.get("score") / 18.0)}</strong>{" "}
             in addition of the <strong>$1 base reward</strong> for completing
             the HIT.
           </p>

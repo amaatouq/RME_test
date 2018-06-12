@@ -14,3 +14,11 @@ export const onRoundEnd = (game, round, players) => {
     player.set("score", player.get("score") + Math.round(score));
   });
 };
+
+export const onGameEnd = (game, round, stage, players) => {
+  const conversionRate = 1 / 18.0;
+  console.log("The game has ended for ");
+  players.forEach(player => {
+    player.set("bonus", player.get("score") * conversionRate || 0);
+  });
+};

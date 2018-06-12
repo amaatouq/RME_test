@@ -22,5 +22,3 @@ export const onGameEnd = (game, round, stage, players) => {
     player.set("bonus", player.get("score") * conversionRate || 0);
   });
 };
-
-export const onGameEnd = (game, players) => {};

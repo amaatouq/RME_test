@@ -1,6 +1,6 @@
 # Reading the mind in the eyes (RME) Test
 
-This is an experiment powered by [Empirica](https://github.com/empiricaly/empirica) (here is a basic [tutorial](https://github.com/empiricaly/tutorial)) as an implementation [Reading the mind in the eyes (RME) test](https://www.autismresearchcentre.com/arc_tests).
+This is an experiment powered by [Empirica](https://github.com/empiricaly/empirica) (here is a basic [tutorial](https://github.com/empiricaly/tutorial)) as an implementation [Reading the mind in the eyes (RME) test](https://www.autismresearchcentre.com/arc_tests). You can try the implementation [here](https://github.com/amaatouq/RME_test).
 
 ## Experiment Demo:
 You and a group of friends can play with this experiment as we ran it by following these instructions (assuming you have [Meteor installed](https://www.meteor.com/install)):

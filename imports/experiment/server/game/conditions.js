@@ -7,8 +7,16 @@ export const conditions = {
     max: 1
   },
   stageDuration: {
-    description: "The maximum duration for the participant to make a choice (0 = unlimited)",
+    description:
+      "The maximum duration for the participant to make a choice (0 = unlimited)",
     type: SimpleSchema.Integer,
     max: 1000
+  },
+  basePay: {
+    description:
+      "The amount for base pay (i.e., showing up and completing the experiment)",
+    type: Number,
+    min: 0,
+    max: 100
   }
 };

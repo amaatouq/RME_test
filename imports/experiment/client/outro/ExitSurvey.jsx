@@ -19,18 +19,18 @@ const Radio = ({ selected, name, value, label, onChange }) => (
 export default class ExitSurvey extends React.Component {
   static stepName = "ExitSurvey";
   state = { age: "", gender: "", strategy: "", fair: "", feedback: "" };
-  
+
   handleChange = event => {
     const el = event.currentTarget;
     this.setState({ [el.name]: el.value });
   };
-  
+
   handleSubmit = event => {
     event.preventDefault();
     this.props.onSubmit(this.state);
   };
-  
-  exitMessage = player => {
+
+  exitMessage = (player, game) => {
     return (
       <div>
         {" "}
@@ -47,17 +47,17 @@ export default class ExitSurvey extends React.Component {
           </strong>{" "}
           in addition of the{" "}
           <strong>
-            <em>$1 base reward</em>
+            <em>${game.treatment.basePay} base reward</em>
           </strong>{" "}
           for completing the HIT.
         </p>
       </div>
     );
   };
-  
+
   exitForm = () => {
     const { age, gender, strategy, fair, feedback, education } = this.state;
-    
+
     return (
       <div>
         {" "}
@@ -105,7 +105,7 @@ export default class ExitSurvey extends React.Component {
               </div>
             </div>
           </div>
-          
+
           <div className="pt-form-group">
             <label className="pt-label">Highest Education Qualification</label>
             <div className="pt-form-content">
@@ -139,7 +139,7 @@ export default class ExitSurvey extends React.Component {
               />
             </div>
           </div>
-          
+
           <div className="form-line thirds">
             <div className="pt-form-group">
               <label className="pt-label" htmlFor="age">
@@ -184,7 +184,7 @@ export default class ExitSurvey extends React.Component {
               </div>
             </div>
           </div>
-          
+
           <button type="submit" className="pt-button pt-intent-primary">
             Submit
             <span className="pt-icon-standard pt-icon-key-enter pt-align-right" />
@@ -193,15 +193,15 @@ export default class ExitSurvey extends React.Component {
       </div>
     );
   };
-  
+
   componentWillMount() {}
-  
+
   render() {
-    const { player } = this.props;
+    const { player, game } = this.props;
     return (
       <Centered>
         <div className="exit-survey">
-          {this.exitMessage(player)}
+          {this.exitMessage(player, game)}
           <hr />
           {this.exitForm()}
         </div>

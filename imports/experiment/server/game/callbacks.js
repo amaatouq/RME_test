@@ -15,10 +15,10 @@ export const onRoundEnd = (game, round, players) => {
   });
 };
 
-export const onGameEnd = (game, round, stage, players) => {
+export const onGameEnd = (game, players) => {
   const conversionRate = 1 / 18.0;
   console.log("The game has ended for ");
   players.forEach(player => {
-    player.set("bonus", player.get("score") * conversionRate || 0);
+    player.set("bonus", Math.round(player.get("score") * conversionRate) || 0);
   });
 };

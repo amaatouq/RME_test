@@ -102,15 +102,15 @@ export const taskData = [
     id: "Face03",
     options: [
       {
-        emotion: "joking",
-        description: "being funny, playful",
-        sentence: "Gary was always joking with his friends."
-      },
-      {
         emotion: "flustered",
         description: "confused, nervous and upset",
         sentence:
           "Sarah felt a bit flustered when she realised how late she was for the meeting and that she had forgotten an important document."
+      },
+      {
+        emotion: "joking",
+        description: "being funny, playful",
+        sentence: "Gary was always joking with his friends."
       },
       {
         emotion: "desire",
@@ -478,16 +478,16 @@ export const taskData = [
     id: "Face15",
     options: [
       {
-        emotion: "contemplative",
-        description: "reflective, thoughtful, considering",
-        sentence:
-          "John was in a contemplative mood on the eve of his 60th birthday."
-      },
-      {
         emotion: "flustered",
         description: "confused, nervous and upset",
         sentence:
           "Sarah felt a bit flustered when she realised how late she was for the meeting and that she had forgotten an important document."
+      },
+      {
+        emotion: "contemplative",
+        description: "reflective, thoughtful, considering",
+        sentence:
+          "John was in a contemplative mood on the eve of his 60th birthday."
       },
       {
         emotion: "encouraging",

@@ -1,4 +1,6 @@
-export const onRoundStart = (game, round, players) => {};
+export const onRoundStart = (game, round, players) => {
+  console.log("round",round.index+1,"For game ", game._id, "has started");
+};
 
 export const onStageEnd = (game, round, stage, players) => {};
 
@@ -17,7 +19,7 @@ export const onRoundEnd = (game, round, players) => {
 
 export const onGameEnd = (game, players) => {
   const conversionRate = 1 / 18.0;
-  console.log("The game has ended for ");
+  console.log("The game has ended for ", game._id);
   players.forEach(player => {
     player.set("bonus", Math.round(player.get("score") * conversionRate) || 0);
   });

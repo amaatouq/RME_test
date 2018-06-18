@@ -1,6 +1,11 @@
+export const onGameStart = (game, players) => {
+};
+
 export const onRoundStart = (game, round, players) => {
   console.log("round",round.index+1,"For game ", game._id, "has started");
 };
+
+export const onStageStart = (game, round, stage, players) => {};
 
 export const onStageEnd = (game, round, stage, players) => {};
 

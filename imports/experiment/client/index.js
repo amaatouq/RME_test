@@ -7,6 +7,8 @@ import Quiz from "./intro/Quiz.jsx";
 import Round from "./game/Round.jsx";
 import Thanks from "./outro/Thanks.jsx";
 import Example from "./intro/Example.jsx";
+import Sorry from "./outro/Sorry";
+
 export const config = {
   RoundComponent: Round,
   ConsentComponent: Consent,
@@ -29,6 +31,9 @@ export const config = {
   // If you don't return anything, or do not define this function, a default
   // exit screen will be shown.
   ExitSteps(game, player) {
+    if (player.exitStatus !== "finished") {
+      return [Sorry];
+    }
     return [ExitSurvey, Thanks];
   }
 };

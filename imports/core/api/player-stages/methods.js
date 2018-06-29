@@ -1,6 +1,11 @@
+import { ValidatedMethod } from "meteor/mdg:validated-method";
 import SimpleSchema from "simpl-schema";
-
 import { PlayerStages } from "./player-stages";
+
+let callOnChange;
+if (Meteor.isServer) {
+  callOnChange = require("../server/onchange").callOnChange;
+}
 
 export const updatePlayerStageData = new ValidatedMethod({
   name: "PlayerStages.methods.updateData",
@@ -15,22 +20,42 @@ export const updatePlayerStageData = new ValidatedMethod({
     },
     value: {
       type: String
+    },
+    append: {
+      type: Boolean,
+      optional: true
+    },
+    noCallback: {
+      type: Boolean,
+      optional: true
     }
   }).validator(),
 
-  run({ playerStageId, key, value }) {
+  run({ playerStageId, key, value, append, noCallback }) {
     const playerStage = PlayerStages.findOne(playerStageId);
     if (!playerStage) {
       throw new Error("playerStage not found");
     }
+
     // TODO check can update this record playerStage
 
     const val = JSON.parse(value);
-    const $set = {
-      [`data.${key}`]: val
-    };
+    let update = { [`data.${key}`]: val };
+    const modifier = append ? { $push: update } : { $set: update };
 
-    PlayerStages.update(playerStageId, { $set }, { autoConvert: false });
+    PlayerStages.update(playerStageId, modifier, { autoConvert: false });
+
+    if (Meteor.isServer && !noCallback) {
+      callOnChange({
+        playerId: playerStage.playerId,
+        playerStageId,
+        playerStage,
+        key,
+        value: val,
+        prevValue: playerStage.data && playerStage.data[key],
+        append
+      });
+    }
   }
 });
 
@@ -41,6 +66,10 @@ export const submitPlayerStage = new ValidatedMethod({
     playerStageId: {
       type: String,
       regEx: SimpleSchema.RegEx.Id
+    },
+    noCallback: {
+      type: Boolean,
+      optional: true
     }
   }).validator(),
 

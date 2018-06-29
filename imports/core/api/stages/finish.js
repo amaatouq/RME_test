@@ -7,7 +7,7 @@ import { Stages } from "./stages.js";
 import { Treatments } from "../treatments/treatments.js";
 import {
   augmentPlayerStageRound,
-  augmentStageRound
+  augmentGameStageRound
 } from "../player-stages/augment.js";
 import { config } from "../../../experiment/server";
 
@@ -26,7 +26,7 @@ export const endOfStage = stageId => {
     round.stages = Stages.find({ roundId: round._id }).fetch();
   });
 
-  augmentStageRound(stage, round);
+  augmentGameStageRound(game, stage, round);
   players.forEach(player => {
     player.stage = _.extend({}, stage);
     player.round = _.extend({}, round);
@@ -40,15 +40,13 @@ export const endOfStage = stageId => {
 
   const nextStage = Stages.findOne({ gameId, index: index + 1 });
 
-  if (!nextStage || stage.roundId !== nextStage.roundId) {
-    if (onRoundEnd) {
-      onRoundEnd(game, round, players);
-    }
+  if ((onRoundEnd && !nextStage) || stage.roundId !== nextStage.roundId) {
+    onRoundEnd(game, round, players);
   }
 
   if (nextStage && (onRoundStart || onStageStart)) {
     const nextRound = Rounds.findOne(nextStage.roundId);
-    augmentStageRound(null, nextRound);
+    augmentGameStageRound(game, null, nextRound);
     players.forEach(player => {
       player.round = _.extend({}, nextRound);
       player.stage = _.extend({}, nextStage);
@@ -81,9 +79,6 @@ export const endOfStage = stageId => {
     if (onGameEnd) {
       onGameEnd(game, players);
     }
-    Games.update(gameId, {
-      $set: { finishedAt: new Date() }
-    });
     Players.update(
       { _id: { $in: _.pluck(players, "_id"), $exists: { exitStatus: false } } },
       {
@@ -91,5 +86,8 @@ export const endOfStage = stageId => {
       },
       { multi: true }
     );
+    Games.update(gameId, {
+      $set: { finishedAt: new Date() }
+    });
   }
 };

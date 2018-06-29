@@ -16,6 +16,10 @@ and this project adheres to
   Exit Survey.
 - CSV Export includes the extracted Player's ID from the URL parameter (i.e., `playerIdParam` settings).
 - New onGameStart, onStageStart callbacks.
+- Simple page titles to help distinguish tabs.
+- New `append()` method on players, playerRounds, playerStages, games, stages and rounds.
+- Added `set()` to games, rounds and stages, and `get()` to games.
+- Added `onSet()`, `onAppend()` and `onChange()` callbacks.
 
 ### Changed
 
@@ -78,6 +82,8 @@ and this project adheres to
   happens if the DB is cleared.
 - CSV Export is not longer mixing up fields.
 - Loading issue between stages and at beginning of game.
+- Re-regestering of player with same playerID in lobby.
+- `.set()` value `0` was not supported, would be casted into `null`.
 
 <!-- Add unreleased changes here -->
 

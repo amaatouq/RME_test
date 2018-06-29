@@ -1,17 +1,20 @@
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import SimpleSchema from "simpl-schema";
-import { PlayerRounds } from "./player-rounds";
 
-let callOnChange;
+import { Games } from "./games.js";
+
+let callOnChange, playerIdForConn;
 if (Meteor.isServer) {
+  playerIdForConn = require("../../startup/server/connections.js")
+    .playerIdForConn;
   callOnChange = require("../server/onchange").callOnChange;
 }
 
-export const updatePlayerRoundData = new ValidatedMethod({
-  name: "PlayerRounds.methods.updateData",
+export const updateGameData = new ValidatedMethod({
+  name: "Games.methods.updateData",
 
   validate: new SimpleSchema({
-    playerRoundId: {
+    gameId: {
       type: String,
       regEx: SimpleSchema.RegEx.Id
     },
@@ -31,27 +34,27 @@ export const updatePlayerRoundData = new ValidatedMethod({
     }
   }).validator(),
 
-  run({ playerRoundId, key, value, append, noCallback }) {
-    const playerRound = PlayerRounds.findOne(playerRoundId);
-    if (!playerRound) {
-      throw new Error("playerRound not found");
+  run({ gameId, key, value, append, noCallback }) {
+    const game = Games.findOne(gameId);
+    if (!game) {
+      throw new Error("game not found");
     }
-    // TODO check can update this record playerRound
+    // TODO check can update this record game
 
     const val = JSON.parse(value);
     let update = { [`data.${key}`]: val };
     const modifier = append ? { $push: update } : { $set: update };
 
-    PlayerRounds.update(playerRoundId, modifier, { autoConvert: false });
+    Games.update(gameId, modifier, { autoConvert: false });
 
     if (Meteor.isServer && !noCallback) {
       callOnChange({
-        playerId: playerRound.playerId,
-        playerRoundId,
-        playerRound,
+        playerId: playerIdForConn(this.connection),
+        gameId,
+        game,
         key,
         value: val,
-        prevValue: playerRound.data && playerRound.data[key],
+        prevValue: game.data && game.data[key],
         append
       });
     }

@@ -14,8 +14,12 @@ const playerInLobby = (playerId, key = "playerIds") => {
   return GameLobbies.findOne(query);
 };
 
-export const savePlayerId = (connId, playerId) => {
-  connections[connId] = playerId;
+export const playerIdForConn = conn => {
+  return connections[conn.id];
+};
+
+export const savePlayerId = (conn, playerId) => {
+  connections[conn.id] = playerId;
 
   const player = Players.findOne(playerId);
   if (!player.readyAt) {
@@ -28,7 +32,6 @@ export const savePlayerId = (connId, playerId) => {
   }
 
   GameLobbies.update(lobby._id, {
-    $inc: { readyCount: 1 },
     $addToSet: { playerIds: playerId }
   });
 };
@@ -48,7 +51,6 @@ Meteor.onConnection(conn => {
     }
 
     GameLobbies.update(lobby._id, {
-      $inc: { readyCount: -1 },
       $pull: { playerIds: playerId }
     });
 

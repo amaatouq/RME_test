@@ -18,7 +18,7 @@ const Radio = ({ selected, name, value, label, onChange }) => (
 
 export default class ExitSurvey extends React.Component {
   static stepName = "ExitSurvey";
-  state = { age: "", gender: "", strategy: "", fair: "", feedback: "" };
+  state = { age: "", gender: "", fair: "", feedback: "" };
 
   handleChange = event => {
     const el = event.currentTarget;
@@ -56,7 +56,7 @@ export default class ExitSurvey extends React.Component {
   };
 
   exitForm = () => {
-    const { age, gender, strategy, fair, feedback, education } = this.state;
+    const { age, gender, fair, feedback, education } = this.state;
 
     return (
       <div>
@@ -141,20 +141,6 @@ export default class ExitSurvey extends React.Component {
           </div>
 
           <div className="form-line thirds">
-            <div className="pt-form-group">
-              <label className="pt-label" htmlFor="age">
-                How would you describe your strategy in the game?
-              </label>
-              <div className="pt-form-content">
-                <textarea
-                  className="pt-input pt-fill"
-                  dir="auto"
-                  name="strategy"
-                  value={strategy}
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
             <div className="pt-form-group">
               <label className="pt-label" htmlFor="age">
                 Do you feel the pay was fair?

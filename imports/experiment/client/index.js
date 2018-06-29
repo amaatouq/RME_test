@@ -31,7 +31,8 @@ export const config = {
   // If you don't return anything, or do not define this function, a default
   // exit screen will be shown.
   ExitSteps(game, player) {
-    if (player.exitStatus !== "finished") {
+    console.log(player);
+    if (player.exitStatus!=="finished") {
       return [Sorry];
     }
     return [ExitSurvey, Thanks];

@@ -3,16 +3,15 @@ export const onGameStart = (game, players) => {
   console.log(game._id, "has started");
 };
 
-export const onRoundStart = (game, round, players) => {
-  console.log("round",round.index+1,"For game ", game._id, "has started");
-};
+export const onRoundStart = (game, round, players) => {};
 
 export const onStageStart = (game, round, stage, players) => {};
 
 export const onStageEnd = (game, round, stage, players) => {};
 
 export const onRoundEnd = (game, round, players) => {
-  //compute the score
+  console.log("round", round.index + 1, "For game ", game._id, "has end");
+  //compute the score at the end of the round
   const correctAnswer = round.get("task").correctAnswer;
 
   players.forEach(player => {
@@ -26,8 +25,9 @@ export const onRoundEnd = (game, round, players) => {
 
 export const onGameEnd = (game, players) => {
   const conversionRate = 1 / 18.0;
-  console.log("The game has ended for ", game._id);
+  console.log("game ", game._id, "has end");
   console.log("-------------");
+  //calculate the bonus at the end of the round
   players.forEach(player => {
     player.set("bonus", Math.round(player.get("score") * conversionRate) || 0);
   });

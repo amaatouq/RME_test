@@ -18,5 +18,12 @@ export const conditions = {
     type: Number,
     min: 0,
     max: 100
-  }
+  },
+  conversionRate:{
+    description:
+      "This will be multiplied by their total score to compute the bonus",
+    type: Number,
+    min: 0,
+    max: 10
+  },
 };

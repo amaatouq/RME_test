@@ -11,9 +11,10 @@ export default class Example extends React.Component {
           <h1> TASK EXAMPLE: </h1>
           <p>
             Here is an example of the task. The correct answer is:{" "}
-            <strong>Panicked.</strong> Try hovering over the options.
+            <strong>Panicked.</strong> Try hovering over the options to see the
+            definition of each word.
           </p>
-  
+
           <div className="round">
             <div className="content">
               <div
@@ -27,14 +28,14 @@ export default class Example extends React.Component {
                 <Tooltip
                   content={
                     <span>
-                  <em>Description:</em>
+                      <em>Description:</em>
                       {" envious"}
                       <br />
-                  <em>Sentence:</em>
+                      <em>Sentence:</em>
                       {
                         " Tony was jealous of all the taller, better-looking boys in his class."
                       }
-                </span>
+                    </span>
                   }
                   usePortal={false}
                   position={Position.TOP_LEFT}
@@ -47,19 +48,19 @@ export default class Example extends React.Component {
                     Jealous
                   </button>
                 </Tooltip>
-        
+
                 <Tooltip
                   className={"right"}
                   content={
                     <span>
-                  <em>Description:</em>
+                      <em>Description:</em>
                       {" distraught, feeling of terror or anxiety"}
                       <br />
-                  <em>Sentence:</em>
+                      <em>Sentence:</em>
                       {
                         " On waking to find the house on fire, the whole family was panicked."
                       }
-                </span>
+                    </span>
                   }
                   usePortal={false}
                   position={Position.TOP_RIGHT}
@@ -71,27 +72,27 @@ export default class Example extends React.Component {
                     Panicked
                   </button>
                 </Tooltip>
-        
+
                 <div className="task-stimulus">
                   <img
                     src={"/experiment/faces/RMET_Practise.png"}
                     className="task-image"
                   />
                 </div>
-        
+
                 <Tooltip
                   content={
                     <span>
-                  <em>Description:</em>
+                      <em>Description:</em>
                       {
                         " conceited, self-important, having a big opinion of oneself"
                       }
                       <br />
-                  <em>Sentence:</em>
+                      <em>Sentence:</em>
                       {
                         " The arrogant man thought he knew more about politics than everyone else in the room."
                       }
-                </span>
+                    </span>
                   }
                   usePortal={false}
                   position={Position.BOTTOM_LEFT}
@@ -104,18 +105,18 @@ export default class Example extends React.Component {
                     Arrogant
                   </button>
                 </Tooltip>
-        
+
                 <Tooltip
                   content={
                     <span>
-                  <em>Description:</em>
+                      <em>Description:</em>
                       {" showing intense dislike"}
                       <br />
-                  <em>Sentence:</em>
+                      <em>Sentence:</em>
                       {
                         " The two sisters were hateful to each other and always fighting."
                       }
-                </span>
+                    </span>
                   }
                   usePortal={false}
                   position={Position.BOTTOM_RIGHT}

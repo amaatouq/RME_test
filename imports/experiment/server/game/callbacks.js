@@ -25,15 +25,14 @@ export default {
   },
 
   onGameEnd(game, players) {
-    const conversionRate = 1 / 18.0;
+    const conversionRate = game.treatment.conversionRate
+      ? game.treatment.conversionRate
+      : 1 / 18.0;
     console.log("game ", game._id, "has end");
     console.log("-------------");
     //calculate the bonus at the end of the round
     players.forEach(player => {
-      player.set(
-        "bonus",
-        Math.round(player.get("score") * conversionRate) || 0
-      );
+      player.set("bonus", (player.get("score") * conversionRate).toFixed(2));
     });
   }
 

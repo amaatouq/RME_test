@@ -11,31 +11,31 @@ export default class Instructions extends React.Component {
         <div className="instructions">
           <h1> INSTRUCTIONS: </h1>
 
-          <span>
-            <p>
-              For each set of eyes, choose which word best describes what the
-              person in the picture is thinking or feeling.
-            </p>
+          <p>
+            In the following, <strong>you will be shown a few pairs of eyes</strong>. For each
+            pair of eyes, <strong>there are four emotion</strong> words around it, and you are
+            asked to <strong>select which one of the four words best describes what the
+            person in the picture is thinking or feeling</strong>.
+          </p>
 
-            <p>
-              You may feel that more than one word is applicable but please
-              choose just one word, the word which you consider to be most
-              suitable. Before making your choice, make sure that you have read
-              all 4 words. You should try to do the task as quickly as possible
-              <strong>
-                {treatment.stageDuration === 0
-                  ? " but you will not be timed."
-                  : " as you only have " +
-                    treatment.stageDuration +
-                    " seconds to make a choice"}
-              </strong>
-            </p>
-            <p>
-              If you do not know what a word means you can look up the
-              definition by hovering over the word.
-            </p>
-          </span>
-          
+          <p>
+            Before making your selection, please <strong>make sure that you have read
+            all 4 words</strong>. If you do not know what a word means, <strong>you can look up
+            its definition by hovering over that word</strong>. You may feel that more
+            than one word is applicable, but please select only one word that
+            you consider to be most suitable.
+          </p>
+
+          <p>
+            <strong>
+              {treatment.stageDuration === 0
+                ? " but you will not be timed."
+                : " You have at most  " +
+                  treatment.stageDuration +
+                  " in each task, so please try to make the selection as quickly as possible."}
+            </strong>
+          </p>
+
           <button
             type="button"
             className="pt-button pt-intent-nope pt-icon-double-chevron-left"

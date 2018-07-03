@@ -18,7 +18,7 @@ const Radio = ({ selected, name, value, label, onChange }) => (
 
 export default class ExitSurvey extends React.Component {
   static stepName = "ExitSurvey";
-  state = { age: "", gender: "", fair: "", feedback: "" , education:""};
+  state = { age: "", gender: "", fair: "", feedback: "", education: "" };
 
   handleChange = event => {
     const el = event.currentTarget;
@@ -43,13 +43,9 @@ export default class ExitSurvey extends React.Component {
         <p>
           You final{" "}
           <strong>
-            <em>bonus is ${player.get("bonus") || 0}</em>
+            bonus for the part of Reading the Mind from the Eye tests{" "}
+            <em>is ${player.get("bonus") || 0}</em>.
           </strong>{" "}
-          in addition of the{" "}
-          <strong>
-            <em>${game.treatment.basePay} base reward</em>
-          </strong>{" "}
-          for completing the HIT.
         </p>
       </div>
     );

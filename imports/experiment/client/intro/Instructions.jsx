@@ -32,7 +32,7 @@ export default class Instructions extends React.Component {
                 ? " but you will not be timed."
                 : " You have at most  " +
                   treatment.stageDuration +
-                  " in each task, so please try to make the selection as quickly as possible."}
+                  " seconds in each task, so please try to make the selection as quickly as possible."}
             </strong>
           </p>
 

@@ -1,4 +1,5 @@
 export default {
+  
   onGameStart(game, players) {
     console.log("-------------");
     console.log(game._id, "has started");
@@ -11,7 +12,7 @@ export default {
   onStageEnd(game, round, stage, players) {},
 
   onRoundEnd(game, round, players) {
-    console.log("round", round.index + 1, "For game ", game._id, "has end");
+    console.log("round", round.index + 1, "For game ", game._id, "has ended");
     //compute the score at the end of the round
     const correctAnswer = round.get("task").correctAnswer;
 
@@ -25,6 +26,7 @@ export default {
   },
 
   onGameEnd(game, players) {
+    console.log("game ended")
     const conversionRate = game.treatment.conversionRate
       ? game.treatment.conversionRate
       : 1 / 18.0;
@@ -88,7 +90,7 @@ export default {
   //   prevValue // Previous value
   // ) {
   //   // Note: `value` is the single last value (e.g 0.2), while `prevValue` will
-  //   //       be an array of the previsous valued (e.g. [0.3, 0.4, 0.65]).
+  //   //       be an array of the previous valued (e.g. [0.3, 0.4, 0.65]).
   // },
 
   // onChange is called when the experiment code call the `.set()` or the

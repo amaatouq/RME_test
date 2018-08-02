@@ -33,25 +33,28 @@ export default class Sorry extends React.Component {
       <Centered>
         <div className="score">
           <h1>Sorry!</h1>
+          <p>Sorry, you were not able to now! {msg}</p>
 
-          <p>Sorry, you were not able to play today! {msg}</p>
+          {/*{player.exitStatus !== "gameFull" ? (*/}
+          <p>
+            Please submit <em>didNotStartRME213093</em> as the survey code in
+            order to receive the base payment for your attempt today.{" "}
+          </p>
+          {/*) : (*/}
+          {/*<p>*/}
+          {/*Please click on: <strong>Reset current session</strong> from the*/}
+          {/*top right side of the page (if it appears for you) to see if there*/}
+          {/*are other games that you could join now. Note you will need to go*/}
+          {/*over the instructions and quiz again (they might be different for*/}
+          {/*different games). Otherwise, Please return the HIT now so our*/}
+          {/*platform does not register your MTurk ID as someone who already*/}
+          {/*participated.*/}
+          {/*</p>*/}
 
-          {pay ? (
-            <p>
-              Please submit{" "}
-              <strong>
-                <em>{player._id}</em>{" "}
-              </strong>in order to receive the base payment for your attempt.{" "}
-            </p>
-          ) : (
-            <p>
-              Please return the HIT now so our platform does not register your
-              MTurk ID as someone who already participated.
-            </p>
-          )}
-
-          <p>Feel free to come back for the next scheduled game.</p>
-
+          <p>
+            <strong>Please come back for the next scheduled game.</strong>{" "}
+            {/*We will send an email notification once the next  HIT is scheduled.*/}
+          </p>
           {/*This is not really needed .. all of these people failed to start the game .. if we allow them to submit, then their data will be deleted, we don't want that*/}
           {/*<p>*/}
           {/*{hasNext && !player.exitStatus === "gameFull" ? (*/}

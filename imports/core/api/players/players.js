@@ -14,7 +14,8 @@ Players.schema = new SimpleSchema({
   // number (saved as string), etc...
   id: {
     type: String,
-    max: 256
+    max: 256,
+    index: 1,
   },
 
   bot: {

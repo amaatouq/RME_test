@@ -34,12 +34,20 @@ export default class Sorry extends React.Component {
         <div className="score">
           <h1>Sorry!</h1>
           <p>Sorry, you were not able to now! {msg}</p>
+  
+  
+          <p>
+            Please return the HIT now so our platform does register your MTurk.
+            Please come back for one of the next batches. We will submit new
+            batches on Monday the 6th of August and Tuesday the 7th of August
+            (batches of 100 games every hour starting at 1PM ET until 4PM).
+          </p>
 
           {/*{player.exitStatus !== "gameFull" ? (*/}
-          <p>
-            Please submit <em>didNotStartRME213093</em> as the survey code in
-            order to receive the base payment for your attempt today.{" "}
-          </p>
+          {/*<p>*/}
+            {/*Please submit <em>didNotStartRME213093</em> as the survey code in*/}
+            {/*order to receive the base payment for your attempt today.{" "}*/}
+          {/*</p>*/}
           {/*) : (*/}
           {/*<p>*/}
           {/*Please click on: <strong>Reset current session</strong> from the*/}
